@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientService } from '../../service/http-client.service';
+import { NoticeModel } from './notice.model';
 
 
 @Component({
@@ -10,6 +11,7 @@ import { HttpClientService } from '../../service/http-client.service';
 export class NoticeComponent implements OnInit {
 
   notices: string[];
+  notice: NoticeModel = new NoticeModel(); 
 
   constructor(
     private httpClientService: HttpClientService
@@ -19,6 +21,30 @@ export class NoticeComponent implements OnInit {
     this.httpClientService.getNotice().subscribe(
       response => this.handleSuccessfulResponse(response),
     );
+  }
+
+  saveNotice(){
+    this.httpClientService.saveNotice(this.notice).subscribe(notice => { 
+      this.ngOnInit();
+    }, err => {
+      console.log('Error on save notice')
+    });
+  }
+
+  editNotice(id: number){
+    this.httpClientService.editNotice(id,this.notice).subscribe(notice => {
+      this.ngOnInit();
+    }, err => {
+      console.log('Error on edit notice')
+    });
+  }
+
+  deleteNotice(id:number){
+    this.httpClientService.deleteNotice(id).subscribe(notice => {
+      this.ngOnInit();
+    }, err => {
+      console.log('Error on edit notice')
+    });
   }
 
   handleSuccessfulResponse(response) {

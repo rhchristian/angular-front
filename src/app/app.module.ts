@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoticeComponent } from './components/notice/notice.component';
+import { HttpClientService } from './service/http-client.service';
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { NoticeComponent } from './components/notice/notice.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [HttpClientService],
   bootstrap: [NoticeComponent]
 })
 export class AppModule { }
