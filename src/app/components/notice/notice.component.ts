@@ -47,6 +47,17 @@ export class NoticeComponent implements OnInit {
     });
   }
 
+  viewNotice(id:number){
+    this.httpClientService.viewNotice(id).subscribe(notice => {     
+      document.getElementById("readTtitle").innerHTML = notice.title
+      document.getElementById("readDescription").innerHTML = notice.description
+      document.getElementById("readPublicationDate").innerHTML = notice.publicationDate
+      this.ngOnInit();
+    }, err => {
+      console.log('Error on view notice')
+    });
+  }
+
   handleSuccessfulResponse(response) {
     this.notices = response;
   }

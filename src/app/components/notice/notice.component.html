@@ -19,6 +19,10 @@
 </form>
 
 
+<h2>List Notice</h2>
+
+<hr>
+
 <div class="row">
     <div class="col-md-12 bs-linebreak"></div>
 
@@ -41,7 +45,7 @@
                     <a href="">Edit </a>
                     <a href="">Delete </a> -->
     
-                    <button type="button" class="btn btn-primary">View</button>
+                    <button type="button" class="btn btn-primary" (click)="viewNotice(notice.id)">View</button>
                     <button type="button" class="btn btn-success" (click)="editNotice(notice.id)">Edit</button>
                     <button type="button" class="btn btn-danger" (click)="deleteNotice(notice.id)">Delete</button>
                 </td>
@@ -60,4 +64,17 @@
             <li class="page-item"><a class="page-link" href="#">Next</a></li>
         </ul>
     </nav>
+</div>
+
+<div class="col-md-12 bs-linebreak"></div>
+
+<h2>Read Notice</h2>
+
+<hr>
+<div>
+        <p id="readTtitle"></p>
+        
+        <p id="readDescription" ></p>
+        
+        <p id="readPublicationDate"></p>
 </div>
